@@ -1,0 +1,109 @@
+---
+title: "Home Work 4"
+author: "Jeff Chandler"
+date: "October 20, 2016"
+output: html_document
+---
+
+#Central Limit Theorem Examples for Normal Distribution
+###Set the variables and create the population
+```{R}
+#set Variables 
+PopSize = 500
+PopMean = 0
+PopStd = 0
+SampleSize = 10
+SampleSize2=50
+SampleMean = 0
+SampleStd = 0
+#set Mean and std for use with rnorm
+m = 8.23
+sd = 1.35
+SampMeanDist=0
+#get normal distribution population
+population = rnorm(PopSize, m, sd)
+
+```
+### Get the Population Mean and display
+```{r}
+mean(population)
+```
+###Get the Standard Deviation and display
+```{r}
+sd(population)
+```
+###Create Histogram for Population 
+```{r}
+hist(population, main = 'Population Distribution', xlab = 'Population', border = 'BLUE', col = 'Purple')
+```
+###Get 30 samples and create Histogram from population for a size of 10
+```{r}
+    for(i in 1:30){
+      
+      SampMeanDist[i] = mean(sample(population,SampleSize, replace = FALSE))
+      
+    }
+    #Create Title
+    SampleOneTitle = paste('Sample Mean Distribution ', SampleSize)
+    #create histogram
+    hist(SampMeanDist, main = SampleOneTitle, xlab = 'Sample Means', col = 'blue', border = 'green')
+```
+###Get 30 samples and create Histogram from population for a size of 50
+```{r}
+for(i in 1:30){
+      
+      SampMeanDist[i] = mean(sample(population,SampleSize2, replace = FALSE))
+      
+    }
+#create title
+SampleOneTitle = paste('Sample Mean Distribution ', SampleSize2)
+#create histogram
+hist(SampMeanDist, main = SampleOneTitle, xlab = 'Sample Means', col = 'blue', border = 'green')
+```
+#In the following section Is an Example of an Exponential Distribution
+###Create the popution 
+```{r}
+population = rexp(PopSize, rate = .01)
+```
+###Get the mean and display
+```{r}
+mean(population)
+```
+
+###Get the Standard Deviation and Display
+```{r}
+sd(population)
+```
+
+###Create and display the histogram
+```{r}
+hist(population, main = 'Population For Exponential Distribution', xlab = 'Population', border = 'BLUE', col = 'Purple')
+```
+###Get samples and display histogram of distribution with Sample Size of 10
+```{r}
+for(i in 1:30){
+      
+      SampMeanDist[i] = mean(sample(population,SampleSize, replace = FALSE))
+      
+    }
+    #Get means
+    mean(SampMeanDist)
+    #Set histogram title
+    SampleOneTitle = paste('Sample Mean Distribution ', SampleSize)
+    #create historgram
+    hist(SampMeanDist, main = SampleOneTitle, xlab = 'Sample Means', col = 'blue', border = 'green')
+```
+###Get samples and display histogram of distribution with sample size 50
+```{r}
+for(i in 1:30){
+      
+      SampMeanDist[i] = mean(sample(population,SampleSize2, replace = FALSE))
+      
+    }
+    #get means
+    mean(SampMeanDist)
+    #set title
+    SampleOneTitle = paste('Sample Mean Distribution ', SampleSize2)
+    #create title
+    hist(SampMeanDist, main = SampleOneTitle, xlab = 'Sample Means', col = 'blue', border = 'green')
+```
